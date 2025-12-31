@@ -1,12 +1,12 @@
 [project]
 name = "mesumali-console-task-manager"
-version = "1.0.1"
+version = "1.0.3"
 description = "A console-based task management application"
 readme = "README.md"
 requires-python = ">=3.13"
 license = {text = "MIT"}
 authors = [
-    {name = "Mesum Ali", email = "mesumali@example.com"}
+    {name = "Mesum Ali", email = "s.mesumali99@gmail.com"}
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -17,7 +17,9 @@ classifiers = [
     "Topic :: Utilities",
 ]
 keywords = ["task", "todo", "cli", "console", "manager"]
-dependencies = []
+dependencies = [
+    "inquirerpy>=0.3.4",
+]
 
 [project.scripts]
 mesumali-todo = "src.main:main"

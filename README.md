@@ -1,132 +1,140 @@
-# Console Task Manager
+# TaskFolio - Interactive Task Manager
 
-A console-based task management application built with Python.
+A modern, interactive console-based task management application built with Python and InquirerPy.
 
 [![PyPI version](https://badge.fury.io/py/mesumali-console-task-manager.svg)](https://pypi.org/project/mesumali-console-task-manager/)
 [![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Installation
+## Features
 
-### From PyPI (Recommended)
+- **Arrow-key navigation** - Navigate menus with arrow keys instead of typing numbers
+- **Fuzzy search** - Type to filter tasks in selection lists
+- **Visual feedback** - Colored output with status icons
+- **Inline validation** - Immediate feedback for invalid input
+- **Delete confirmation** - Prevent accidental deletions
+
+## Installation
 
 ```bash
 pip install mesumali-console-task-manager
 ```
 
-### From Source
+After installation, run:
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd Phase_01
-   ```
+```bash
+mesumali-todo --help
+```
 
-2. Install dependencies with UV:
-   ```bash
-   uv sync
-   ```
+```
+╔══════════════════════════════════════════════════════════════════════════╗
+║  ████████╗ █████╗ ███████╗██╗  ██╗███████╗ ██████╗ ██╗     ██╗ ██████╗   ║
+║  ╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔═══██╗██║     ██║██╔═══██╗  ║
+║     ██║   ███████║███████╗█████╔╝ █████╗  ██║   ██║██║     ██║██║   ██║  ║
+║     ██║   ██╔══██║╚════██║██╔═██╗ ██╔══╝  ██║   ██║██║     ██║██║   ██║  ║
+║     ██║   ██║  ██║███████║██║  ██╗██║     ╚██████╔╝███████╗██║╚██████╔╝  ║
+║     ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝      ╚═════╝ ╚══════╝╚═╝ ╚═════╝   ║
+╠══════════════════════════════════════════════════════════════════════════╣
+║  TaskFolio v1.0.3 - Your Personal Interactive Task Manager               ║
+╚══════════════════════════════════════════════════════════════════════════╝
 
-## Running the Application
+Usage:  mesumali-todo [options]
 
-### If installed via pip:
+Options:
+  --help, -h      Show this help message
+  --version, -v   Show version number
+
+Features:
+  - Arrow-key menu navigation
+  - Fuzzy search for tasks
+  - Visual status indicators
+  - Delete confirmation
+
+Run without options to start the interactive task manager.
+```
+
+## Quick Start
 
 ```bash
 mesumali-todo
 ```
 
-### If installed from source:
+Interactive task manager with arrow-key navigation and fuzzy search.
+
+### From Source
 
 ```bash
+git clone <repository-url>
+cd Phase_01
+uv sync
 uv run python -m src.main
 ```
 
-## First Run
+## Usage
 
-1. When prompted, enter your username (alphanumeric, e.g., "alice"):
-   ```
-   Welcome to Task Manager!
-   Enter your username: alice
-   ```
+Navigate the menu using arrow keys and press Enter to select:
 
-2. The main menu will appear:
-   ```
-   === Task Manager (alice) ===
-   1. Add Task
-   2. View All Tasks
-   3. Update Task
-   4. Delete Task
-   5. Change Task Status
-   6. Exit
+```
+? What would you like to do?
+> [1] Add Task
+  [2] View All Tasks
+  [3] Update Task
+  [4] Delete Task
+  [5] Change Status
+  [6] Exit
+```
 
-   Enter choice (1-6):
-   ```
+## Keyboard Navigation
+
+| Key | Action |
+|-----|--------|
+| ↑/↓ | Move selection |
+| Enter | Confirm selection |
+| Type | Filter (in fuzzy lists) |
+| Ctrl+C | Exit application |
 
 ## Basic Operations
 
 ### Add a Task
 
-```
-Enter choice (1-6): 1
-Enter task title: Buy groceries
-Enter task description (optional): Milk, eggs, bread
-
-Task 1 created successfully.
-```
+1. Select **[1] Add Task**
+2. Enter task title (required, max 200 chars)
+3. Enter description (optional)
 
 ### View All Tasks
 
-```
-Enter choice (1-6): 2
-
-=== Your Tasks ===
-[1] Buy groceries
-    Description: Milk, eggs, bread
-    Status: incomplete
----
-```
+Select **[2] View All Tasks** to see your tasks with status icons.
 
 ### Update a Task
 
-```
-Enter choice (1-6): 3
-Enter task ID to update: 1
-Enter new title (press Enter to keep current): Get groceries
-Enter new description (press Enter to keep current):
-
-Task 1 updated successfully.
-```
+1. Select **[3] Update Task**
+2. Search/select task from fuzzy list
+3. Enter new title or description
 
 ### Delete a Task
 
-```
-Enter choice (1-6): 4
-Enter task ID to delete: 1
-
-Task 1 deleted successfully.
-```
+1. Select **[4] Delete Task**
+2. Search/select task from fuzzy list
+3. Confirm deletion (y/N)
 
 ### Change Task Status
 
-```
-Enter choice (1-6): 5
-Enter task ID: 1
-Select new status:
-  1. incomplete
-  2. inProcessing
-  3. complete
-Enter choice (1-3): 3
+1. Select **[5] Change Status**
+2. Search/select task from fuzzy list
+3. Select new status:
+   ```
+   > ○ incomplete
+     ◐ inProcessing
+     ● complete
+   ```
 
-Task 1 marked as complete.
-```
+## Status Icons
 
-### Exit
-
-```
-Enter choice (1-6): 6
-
-Goodbye!
-```
+| Icon | Status | Meaning |
+|------|--------|---------|
+| ○ | incomplete | Task not started |
+| ◐ | inProcessing | Task in progress |
+| ● | complete | Task finished |
 
 ## Data Storage
 
@@ -138,16 +146,33 @@ Tasks persist across sessions. Restart the app and log in with the same username
 
 ## Troubleshooting
 
-### "Invalid choice" error
-Enter a number 1-6 corresponding to the menu options.
+### Unicode Icons Not Displaying
 
-### "Task not found" error
-Use "View All Tasks" (option 2) to see valid task IDs.
+**Symptom**: Status icons show as boxes or question marks
 
-### "Title cannot be empty" error
-Task titles are required. Enter at least one character.
+**Solution**: Use a modern terminal:
+- Windows: Windows Terminal, VS Code terminal
+- macOS: Default Terminal.app, iTerm2
+- Linux: GNOME Terminal, Konsole
+
+### Colors Not Showing
+
+**Symptom**: All text is plain/white
+
+**Solution**: InquirerPy auto-detects color support. If not working:
+1. Check terminal supports ANSI colors
+2. Set `TERM=xterm-256color` environment variable
+
+### Keyboard Navigation Not Working
+
+**Symptom**: Arrow keys print characters instead of navigating
+
+**Solution**: Ensure terminal is in canonical mode. Try:
+- Restart terminal
+- Use `stty sane` to reset terminal settings
 
 ### Data file issues
+
 If `db/user_{username}.json` is corrupted, delete it and restart. A fresh empty task list will be created.
 
 ## Running Tests
